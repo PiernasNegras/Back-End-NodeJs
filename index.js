@@ -1,6 +1,22 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+//Import de swaggerDocs.
+import swaggerUi from 'swagger-ui-express';
+
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+// calcular __dirname en ESM.
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = path.dirname(__filename);
+
+// leer y parsear swagger-output.json.
+const swaggerPath     = path.join(__dirname, 'swagger-output.json');
+const swaggerDocument = JSON.parse(
+    fs.readFileSync(swaggerPath, 'utf-8')
+);
 
 //---------------------imports de rutas--------------------------.
 import productosRouter from './src/routes/productosRouter.js';
@@ -25,6 +41,8 @@ app.use('/auth',authRouter);
 // ruta de productos, con middleware de auth.
 app.use('/api',authentication,productosRouter);
 
+//Ruta de Docs interactivas.
+app.use('/docs',swaggerUi.serve,swaggerUi.setup(swaggerDocument));
 
 // middelware para manejar error 404
 app.use((req, res, next)=>{
