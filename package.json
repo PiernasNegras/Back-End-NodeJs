@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "vercel-build": "node swagger.js",  
-    "swagger":      "node swagger.js",
-    "start":        "node index.js"
+    "swagger":"node swagger.js",
+    "build":"npm run swagger",
+    "vercel-build":"npm run swagger",
+    "start":"node index.js"
   },
   "keywords": [],
   "author": "",
