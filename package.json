@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run swagger",
     "swagger": "node swagger.js",
     "start": "npm run swagger && node index.js"
   },
