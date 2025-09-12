@@ -2,10 +2,7 @@
   "version": 2,
   "functions": {
     "index.js": {
-      "includeFiles": [
-        "swagger-output.json",
-        "node_modules/swagger-ui-dist/**"
-      ]
+      "includeFiles": "{swagger-output.json,node_modules/swagger-ui-dist/**}"
     }
   },
   "routes": [
