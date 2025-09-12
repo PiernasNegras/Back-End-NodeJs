@@ -1,16 +1,14 @@
 {
     "version": 2,
-    "builds": [
-    { "src": "swagger.js", "use": "@vercel/node" },
-    {
-        "src": "index.js",
-        "use": "@vercel/node",
-        "config": {
-        "includeFiles": ["swagger-output.json"]
-        }
+    "functions": {
+    "index.js": {
+    "includeFiles": [
+        "swagger-output.json",
+        "node_modules/swagger-ui-dist/**"
+    ]
     }
-    ],
+    },
     "routes": [
-        { "src": "/(.*)", "dest": "index.js" }
+    { "src": "/(.*)", "dest": "index.js" }
     ]
 }
