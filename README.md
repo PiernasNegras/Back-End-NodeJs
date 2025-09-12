@@ -137,8 +137,8 @@ npm run swagger
 ```bash
 npm start
 ```
-Servidor: http://localhost:3000  
-Swagger UI: http://localhost:3000/docs
+Servidor: http://127.0.0.1:3000  
+Swagger UI: http://127.0.0.1:3000/docs
 
 ---
 
@@ -169,4 +169,4 @@ Swagger UI: http://localhost:3000/docs
 
 **Nahuel Martínez** – Backend Developer  
 GitHub: https://github.com/PiernasNegras  
-LinkedIn: https://www.linkedin.com/in/n
+LinkedIn: https://www.linkedin.com/in/nahuel-martinez-7b898a218/
