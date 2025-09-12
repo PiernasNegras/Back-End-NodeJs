@@ -1,14 +1,14 @@
 {
-    "version": 2,
-    "functions": {
+  "version": 2,
+  "functions": {
     "index.js": {
-    "includeFiles": [
+      "includeFiles": [
         "swagger-output.json",
         "node_modules/swagger-ui-dist/**"
-    ]
+      ]
     }
-    },
-    "routes": [
+  },
+  "routes": [
     { "src": "/(.*)", "dest": "index.js" }
-    ]
+  ]
 }
