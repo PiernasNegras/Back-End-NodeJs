@@ -21,7 +21,7 @@ export const createProducto = async (req, res) => {
 };
 
 export const deleteProducto = async (req, res) => {
-    const id = parseInt(req.params.id, 10);
+    const { id } = req.params;
     const producto = await productosService.getProductoById(id);
     if (!producto) {
     return res.status(404).json({ message: 'Producto no encontrado' });
