@@ -92,6 +92,7 @@ Body: { "email": "user@ejemplo.com", "password": "OnePiece4321" }
 GET    /api/productos           # Lista todos los productos
 GET    /api/productos/:id       # Obtiene un producto por ID
 POST   /api/productos           # Crea un nuevo producto
+PUT    /api/productos/:id       # Actualiza un producto por ID y datos en el Body
 DELETE /api/productos/:id       # Elimina un producto por ID
 ```
 
