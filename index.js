@@ -49,7 +49,7 @@ app.use((req, res, next)=>{
     res.status(404).send('El recurso no esta, el recurso no esta, el recurso no existe');
 });
 
-// defino el puerto
+// defino el puerto.
 const PORT = 3000;
 
 app.listen(PORT,()=>{
