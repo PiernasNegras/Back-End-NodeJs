@@ -1,14 +1,14 @@
 import express from 'express';
 const router = express.Router();
 
-// importo controlladores
+// importo controladores
 import {
     getAllProductos,
     getProductosById,
     createProducto,
     deleteProducto,
     updateProducto
-} from '../controllers/productosController.js'
+} from '../controllers/productosController.js';
 
 /**
  * @typedef Producto
@@ -21,14 +21,16 @@ import {
 /**
  * @route GET /api/productos
  * @group Productos - Operaciones sobre productos
+ * @security bearerAuth
  * @returns {Array.<Producto>} 200 - Lista de productos
- * @returns {Error} 500 - Error interno del servidor
+ * @returns {Error} 401 - No autorizado
  */
 router.get('/productos', getAllProductos);
 
 /**
  * @route GET /api/productos/{id}
  * @group Productos - Operaciones sobre productos
+ * @security bearerAuth
  * @param {string} id.path.required - ID del producto
  * @returns {Producto.model} 200 - Datos del producto
  * @returns {Error} 404 - Producto no encontrado
@@ -38,6 +40,7 @@ router.get('/productos/:id', getProductosById);
 /**
  * @route POST /api/productos
  * @group Productos - Operaciones sobre productos
+ * @security bearerAuth
  * @param {Producto.model} producto.body.required - Datos del nuevo producto
  * @returns {object} 201 - Producto creado correctamente
  * @returns {Error} 400 - Datos de entrada inválidos
@@ -47,20 +50,22 @@ router.post('/productos', createProducto);
 /**
  * @route DELETE /api/productos/{id}
  * @group Productos - Operaciones sobre productos
+ * @security bearerAuth
  * @param {string} id.path.required - ID del producto a eliminar
  * @returns {object} 200 - Confirmación de borrado
  * @returns {Error} 404 - Producto no encontrado
  */
-router.delete('/productos/:id',deleteProducto);
+router.delete('/productos/:id', deleteProducto);
 
 /**
  * @route PUT /api/productos/{id}
  * @group Productos - Operaciones sobre productos
+ * @security bearerAuth
  * @param {string} id.path.required - ID del producto a actualizar
  * @param {Producto.model} producto.body.required - Campos a modificar
  * @returns {Producto.model} 200 - Producto actualizado
  * @returns {Error} 404 - Producto no encontrado
  */
-router.put('/productos/:id', updateProducto)   // 2. Aquí añades la ruta para update
+router.put('/productos/:id', updateProducto);
 
 export default router;
