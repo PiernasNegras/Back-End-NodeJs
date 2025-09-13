@@ -5,7 +5,8 @@ import {
     getDoc,
     addDoc,
     deleteDoc,
-    doc
+    doc,
+    updateDoc
 } from 'firebase/firestore';
 
 //  instancia de la db referenciada a la collecion de productos.
@@ -53,7 +54,6 @@ export async function saveProducto(producto) {
     }
 };
 
-
 // Defino un metodo para borrar un producto en FireStore.
 export async function deleteProducto(id) {
     try{
@@ -65,34 +65,15 @@ export async function deleteProducto(id) {
     }
 };
 
-// import fs from 'fs'
-// import path from 'path'
-// import { fileURLToPath } from 'url'
-
-// const __dirname = path.dirname(fileURLToPath(import.meta.url))
-// const dataPath = path.join(__dirname, '../data/productos.json')
-
-// export function getAllProductos() {
-//     const data = fs.readFileSync(dataPath, 'utf-8')
-//     return JSON.parse(data)
-// }
-
-// export function getProductoById(id) {
-//     const numericId = typeof id === 'string' ? parseInt(id, 10) : id 
-//     const productos = getAllProductos()
-//     return productos.find(p => p.id === numericId)
-// }
-
-// export function saveProducto({name, price, category}) {
-//     const productos = getAllProductos()
-//     const newProducto = { id: productos.length, name, price, category }
-//     productos.push(newProducto)
-//     fs.writeFileSync(dataPath, JSON.stringify(productos, null, 2))
-//     return newProducto
-// }
-
-// export function deleteProducto(id) {
-//     const numericId = typeof id === 'string' ? parseInt(id, 10) : id
-//     const productos = getAllProductos().filter(p => p.id !== numericId)
-//     fs.writeFileSync(dataPath, JSON.stringify(productos, null, 2))
-// }
+// Defino un metodo para actualizar un producto en FireStore.
+export async function updateProducto(id, data) {
+    try {
+        const productoRef = doc(productosCollection, id);
+        await updateDoc(productoRef, data);
+        const updatedSnap = await getDoc(productoRef);
+        return { id: updatedSnap.id, ...updatedSnap.data() };
+    } catch (error) {
+        console.error('Error actualizando el producto:', error);
+        throw error;
+    };
+};

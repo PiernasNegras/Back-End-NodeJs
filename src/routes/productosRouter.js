@@ -6,7 +6,8 @@ import {
     getAllProductos,
     getProductosById,
     createProducto,
-    deleteProducto
+    deleteProducto,
+    updateProducto
 } from '../controllers/productosController.js'
 
 /**
@@ -51,5 +52,15 @@ router.post('/productos', createProducto);
  * @returns {Error} 404 - Producto no encontrado
  */
 router.delete('/productos/:id',deleteProducto);
+
+/**
+ * @route PUT /api/productos/{id}
+ * @group Productos - Operaciones sobre productos
+ * @param {string} id.path.required - ID del producto a actualizar
+ * @param {Producto.model} producto.body.required - Campos a modificar
+ * @returns {Producto.model} 200 - Producto actualizado
+ * @returns {Error} 404 - Producto no encontrado
+ */
+router.put('/productos/:id', updateProducto)   // 2. Aquí añades la ruta para update
 
 export default router;
