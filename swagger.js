@@ -1,36 +1,41 @@
-import swaggerAutogen from 'swagger-autogen';
+import swaggerJSDoc from 'swagger-jsdoc';
 
-const doc = {
-    openapi: '3.0.0',
-    info: {
-        title: 'Mi API con NodeJS',
-        description: 'Documentación generada automáticamente con Swagger',
-        version: '1.0.0',
-        contact: {
-            name: 'Nahuel Martínez - GitHub',
-            url: 'https://github.com/PiernasNegras'
-        }
-    },
-    externalDocs: {
-        description: 'LinkedIn Nahuel Martinez',
-        url: 'https://www.linkedin.com/in/nahuel-martinez-7b898a218/'
-    },
-    servers: [
-        { url: process.env.HOST || 'http://localhost:3000' }
-    ],
-
-    components: {
-        securitySchemes: {
-            bearerAuth: {
-                type: 'http',
-                scheme: 'bearer',
-                bearerFormat: 'JWT'
-            }
-        }
+const swaggerDefinition = {
+  openapi: '3.0.0',
+  info: {
+    title: 'Mi API con NodeJS',
+    version: '1.0.0',
+    description: 'Documentación generada automáticamente con Swagger',
+    contact: {
+      name: 'Nahuel Martínez - GitHub',
+      url: 'https://github.com/PiernasNegras'
     }
+  },
+  servers: [
+    {
+      url: 'http://localhost:3000'
+    }
+  ],
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT'
+      }
+    }
+  },
+  externalDocs: {
+    description: 'LinkedIn Nahuel Martinez',
+    url: 'https://www.linkedin.com/in/nahuel-martinez-7b898a218/'
+  }
 };
 
-const outputFile   = './swagger-output.json';
-const endpointsFiles = ['./index.js'];
+const options = {
+  swaggerDefinition,
+  apis: ['./src/routes/*.js'] // Ajustá la ruta según donde estén tus archivos de rutas
+};
 
-swaggerAutogen({ openapi: '3.0.0' })(outputFile, endpointsFiles, doc);
+const swaggerSpec = swaggerJSDoc(options);
+
+export default swaggerSpec;

@@ -2,13 +2,41 @@ import express from 'express';
 import { login } from '../controllers/authController.js';
 
 const router = express.Router();
+
 /**
- * @route POST /auth/login
- * @group Autenticación - Endpoints de login
- * @param {string} email.body.required - Email del usuario
- * @param {string} password.body.required - Contraseña del usuario
- * @returns {object} 200 - Devuelve un objeto con el JWT
- * @returns {Error} 401 - Credenciales inválidas
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: Iniciar sesión y obtener token JWT
+ *     tags: [Autenticación]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: user@ejemplo.com
+ *               password:
+ *                 type: string
+ *                 example: OnePiece4321
+ *     responses:
+ *       200:
+ *         description: Token generado correctamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *       401:
+ *         description: Credenciales inválidas
  */
 router.post('/login', login);
 
