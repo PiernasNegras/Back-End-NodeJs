@@ -1,5 +1,10 @@
 import swaggerJSDoc from 'swagger-jsdoc';
 
+const isProduction = process.env.NODE_ENV === 'production';
+const serverUrl = isProduction
+  ? 'https://tu-dominio.vercel.app' // Reemplazá con tu dominio real
+  : 'http://localhost:3000';
+
 const swaggerDefinition = {
   openapi: '3.0.0',
   info: {
@@ -13,7 +18,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'http://localhost:3000'
+      url: serverUrl
     }
   ],
   components: {
@@ -33,7 +38,7 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: ['./src/routes/*.js'] // Ajustá la ruta según donde estén tus archivos de rutas
+  apis: ['./src/routes/*.js']
 };
 
 const swaggerSpec = swaggerJSDoc(options);
