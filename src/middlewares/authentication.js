@@ -1,8 +1,8 @@
-// middleware que valida las autenticaciones
+// Middleware que valida las autenticaciones.
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 
-// constante con la key de mi .env.
+// Constante con la key de mi .env.
 const secret_key = process.env.JWT_SECRET_KEY;
 
 // Middleware para verificar el token JWT.

@@ -29,7 +29,7 @@ app.use('/api', authentication, productosRouter);
 // Ruta de documentación Swagger generada automáticamente
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Middelware para manejar error 404
+// Middelware para manejar error 404.
 app.use((req, res, next) => {
     res.status(404).send('El recurso no esta, el recurso no esta, el recurso no existe');
 });

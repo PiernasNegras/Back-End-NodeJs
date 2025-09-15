@@ -1,6 +1,7 @@
-// controllador para mis autenticacion.
+// Controllador para mis autenticacion.
 import { generateToken } from "../utils/token-generator.js";
 
+//Usuario Harcodeado para pruebas publicas.
 const default_user = {
     id: 1,
     email: "user@ejemplo.com",
@@ -10,9 +11,9 @@ const default_user = {
 export const login = async  (req, res) => {
     const { email, password } = req.body;
 
-    // ejemplo de usuario hardcodeado.
+    // Ejemplo de usuario hardcodeado.
     const user = {id:1, email};
-    // checkeo que la info mandado por body coincida con el de mi db.
+    // Checkeo que la info mandado por body coincida con el de mi db.
     if (email === default_user.email && password === default_user.password){
         const token = generateToken(user);
         return res.json({token});
