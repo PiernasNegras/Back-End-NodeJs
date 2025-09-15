@@ -20,21 +20,21 @@ app.get('/', (req, res) => {
     res.send('Hola do mundo Express!');
 });
 
-// ruta de autenticacion.
+// Ruta de autenticacion.
 app.use('/auth', authRouter);
 
-// ruta de productos, con middleware de auth.
+// Ruta de productos, con middleware de auth.
 app.use('/api', authentication, productosRouter);
 
 // Ruta de documentación Swagger generada automáticamente
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// middelware para manejar error 404
+// Middelware para manejar error 404
 app.use((req, res, next) => {
     res.status(404).send('El recurso no esta, el recurso no esta, el recurso no existe');
 });
 
-// defino el puerto.
+// Defino el puerto.
 const PORT = 3000;
 
 app.listen(PORT, () => {

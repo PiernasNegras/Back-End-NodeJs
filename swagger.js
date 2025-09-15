@@ -2,7 +2,7 @@ import swaggerJSDoc from 'swagger-jsdoc';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const serverUrl = isProduction
-  ? 'https://tu-dominio.vercel.app' // Reemplazá con tu dominio real
+  ? 'https://back-end-node-js.vercel.app'
   : 'http://localhost:3000';
 
 const swaggerDefinition = {
