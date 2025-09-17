@@ -26,7 +26,7 @@ Desde allí podés explorar todos los endpoints, ver los modelos de datos y prob
 
 - Autenticación stateless con **JWT** y middleware de verificación.
 - **CRUD de productos** sobre Firestore: listar, obtener por ID, crear, eliminar.
-- **Swagger UI** en \`/docs\` con especificación generada por \`swagger-autogen\`.
+- **Swagger UI** en \`/docs\` con especificación`.
 - Despliegue en **Vercel** con configuración para incluir assets de Swagger UI.
 
 ---
@@ -103,7 +103,7 @@ DELETE /api/productos/:id       # Elimina un producto por ID
 - Node.js + Express
 - Firebase Firestore
 - JSON Web Tokens (jsonwebtoken)
-- Swagger UI Express + swagger-autogen
+- Swagger UI Express
 - Vercel
 - dotenv, body-parser, cors
 
@@ -169,5 +169,5 @@ Swagger UI: http://127.0.0.1:3000/docs
 ## 👤 Autor
 
 **Nahuel Martínez** – Backend Developer  
-GitHub: https://github.com/PiernasNegras  
+GitHub: https://github.com/PiernasNegras/Back-End-NodeJs  
 LinkedIn: https://www.linkedin.com/in/nahuel-martinez-7b898a218/
